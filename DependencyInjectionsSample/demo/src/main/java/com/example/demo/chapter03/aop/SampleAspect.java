@@ -22,15 +22,16 @@ public class SampleAspect {
 //    @After("execution(* com.example.demo.chapter03.used.*Greet.*(..))")
 //    public void afterAdvice(JoinPoint joinPoint){
 //        System.out.println("==== AfterAdvice ====");
-//        System.out.println(new SimpleDateFormat(    "yyyy/MM/dd").format(new java.util.Date()));
+//        System.out.println(new SimpleDateFormat("yyyy/MM/dd").format(new java.util.Date()));
 //        System.out.println(String.format("메서드 : %s", joinPoint.getSignature().toShortString()));
 //    }
     @Around("execution(* com.example.demo.chapter03.used.Greet.*(..))")
     public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("==== AroundAdvice ====");
         System.out.println("처리전 <<<");
-        Object result = joinPoint.proceed();
+        Object result;
+        result = joinPoint.proceed();
         System.out.println("처리후 >>>");
-        return result;
+        return result; // 반환 오브젝트가 필요할 시 반환한다.
     }
 }
